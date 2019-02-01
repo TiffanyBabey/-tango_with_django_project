@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+{% load static %}
 <html>
 
 	<head>
@@ -9,11 +10,12 @@
 	<body>
 		<h1> About Rango </h1>
 		<div>
-			wat<br />
+			Rango says here is the about page.<br />
 			<strong> {{boldmessage }}</strong><br />
 		</div>
 		<div>
 			<a href="/rango/">Index</A><br />
+			<img src="{% static "images/rangowfish.jpg" %}" alt="Rango with a fish" /><br />
 			<img src="{{ MEDIA_URL }}cat.jpg" alt="Weird ass cat" />
 		</div>
 	</body>
