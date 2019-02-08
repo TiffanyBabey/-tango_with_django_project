@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
+from django.core.urlresolvers import reverse
 
 
 def index(request):
@@ -29,10 +30,11 @@ def show_category(request, category_name_slug):
 		context_dict['category'] = category
 		
 	except Category.DoesNotExist:
-		context_dict['category'] = None
 		context_dict['pages'] = None
+		context_dict['category'] = None
 		
 	return render(request, 'rango/category.html', context_dict)
+	
 	
 def add_category(request):
 	form = CategoryForm()
@@ -63,7 +65,7 @@ def add_page(request, category_name_slug):
 				page.category = category
 				page.views = 0
 				page.save()
-				return show_category(request, category_name_slug)
+			return show_category(request, category_name_slug)
 		else:
 			print(form.errors)
 			

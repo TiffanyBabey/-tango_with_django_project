@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
+{% load rango_template_tags %}
 
 <html>
 
-	<head>
-	
+	<head lang="en">
+		<meta charset="UTF-8" />
 		<title>
 			Rango -
 			{% block title_block %}
@@ -15,7 +17,11 @@
 	</head>
 	
 	<body>
-	
+		<div>
+    		{% block sidebar_block%}
+            	{% get_category_list%}  
+        	{% endblock%}
+    	</div>
 		<div>
 			{% block body_block %}
 			{% endblock %}
@@ -26,9 +32,9 @@
 		<div>
 			<ul>
 			
-				<li><a href="{% url 'add_category' %}">Add New Category</a></li>
-				<li><a href="{% url 'about' %}">About</a></li>
-				<li><a href="{% url 'index' %}">Index</a></li>
+				<li><a href="{% url 'rango:add_category' %}">Add New Category</a></li>
+				<li><a href="{% url 'rango:about' %}">About</a></li>
+				<li><a href="{% url 'rango:index' %}">Index</a></li>
 				
 				
 			</ul>
